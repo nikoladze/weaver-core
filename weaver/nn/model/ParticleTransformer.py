@@ -344,7 +344,8 @@ class PairEmbed(nn.Module):
                         x[:, :, i, i] = 0
                     x = x.view(-1, self.pairwise_lv_dim, seq_len * seq_len)
                 if uu is not None:
-                    uu = uu.view(-1, self.pairwise_input_dim, seq_len * seq_len)
+                    #uu = uu.view(-1, self.pairwise_input_dim, seq_len * seq_len)
+                    uu = uu.reshape(-1, self.pairwise_input_dim, seq_len * seq_len)
             if self.mode == 'concat':
                 if x is None:
                     pair_fts = uu
